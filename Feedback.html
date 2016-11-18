@@ -4,10 +4,34 @@
             Feedback
         </title>
         <link rel="stylesheet" type="text/css" href="Feedback_Style.css"/>
+        <script>
+            function validateForm() 
+            {
+                var x = document.forms["Feedback_Form"]["first_name"].value;
+                var msg="";
+                if (x == "")
+                    msg+="Name must be filled out\n";
+                x = document.forms["Feedback_Form"]["email"].value;
+                if (x == "")
+                    msg+="Email must be filled out\n";
+                x = document.forms["Feedback_Form"]["Contact"].value;
+                if (x == "")
+                    msg+="Contact Number must be filled out\n";
+                x = document.forms["Feedback_Form"]["comments"].value;
+                if (x == "")
+                    msg+="Please write Feedback\n";
+                if(msg!="")
+                {
+                    alert(msg);
+                    return false;
+                }
+                return true;
+            }
+        </script>
     </head>
     <body id="Content">
         <center>
-            <form id="Feedback_Form" method="post" action="">
+            <form id="Feedback_Form" method="post" action="http://localhost/Web_Proj/Feedback_Response.php" onsubmit="return validateForm()">
                 <table>
                     <tr>
                         <td>
@@ -35,10 +59,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <label class="IN" for="telephone">Contact Number</label>
+                            <label class="IN" for="Contact">Contact Number</label>
                         </td>
                         <td>
-                            <input  type="text" name="Contact" maxlength="30" size="30">
+                            <input  type="text" name="Contact" maxlength="11" size="30">
                         </td>
                     </tr>
                     <tr>
